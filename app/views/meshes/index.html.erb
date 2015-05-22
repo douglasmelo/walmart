@@ -1,0 +1,33 @@
+<h1>Listing meshes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Map name</th>
+      <th>Distance</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meshes.each do |mesh| %>
+      <tr>
+        <td><%= mesh.origin %></td>
+        <td><%= mesh.destination %></td>
+        <td><%= mesh.map_name %></td>
+        <td><%= mesh.distance %></td>
+        <td><%= link_to 'Show', mesh %></td>
+        <td><%= link_to 'Edit', edit_mesh_path(mesh) %></td>
+        <td><%= link_to 'Destroy', mesh, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mesh', new_mesh_path %>

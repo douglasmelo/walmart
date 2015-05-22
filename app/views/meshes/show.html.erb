@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @mesh.origin %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @mesh.destination %>
+</p>
+
+<p>
+  <strong>Map name:</strong>
+  <%= @mesh.map_name %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @mesh.distance %>
+</p>
+
+<%= link_to 'Edit', edit_mesh_path(@mesh) %> |
+<%= link_to 'Back', meshes_path %>

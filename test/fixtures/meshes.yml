@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  origin: MyString
+  destination: MyString
+  map_name: MyString
+  distance: 1.5
+
+two:
+  origin: MyString
+  destination: MyString
+  map_name: MyString
+  distance: 1.5
