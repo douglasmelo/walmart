@@ -1,5 +1,7 @@
 Walmart::Application.routes.draw do
-  resources :meshes
+  resources :meshes do
+    get '/search', on: :collection, action: :search
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

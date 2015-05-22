@@ -21,6 +21,50 @@ class MeshesController < ApplicationController
   def edit
   end
 
+  # Action
+def search
+   if valid_params
+      #Search all meshes by origin
+      @meshes = Mesh.
+       by_origin(params[:origin])
+       .order(:origin)
+       
+       path_results = Array.new
+       distance_results = Array.new
+
+       #Possible path from origin
+       @meshes.each do |mash|
+          distance = mash.distance
+          puts "distance: #{mash.distance}"
+          caminhos = Array.new
+          caminhos.push(params[:origin])
+          findNextDestination(mash, caminhos, params[:destination], distance, path_results, distance_results)
+       end
+
+       autonomy = params[:autonomy]
+       fuel_value = params[:fuel_value]
+
+       shortest_distance = distance_results[0]
+       selected_index = 0
+       for i in 1..distance_results.length-1
+          if(shortest_distance > distance_results[i])
+              shortest_distance  = distance_results[i]
+              selected_index = i
+          end
+       end 
+
+       puts "shortest_distance: #{shortest_distance}"
+       puts "shortest_path: #{path_results[selected_index]}"
+
+       cust = shortest_distance.to_f/autonomy.to_f * fuel_value.to_f;
+       puts "cuts: #{cust}"
+
+       render action: 'index'
+   else 
+     not_acceptable
+  end
+end
+
   # POST /meshes
   # POST /meshes.json
   def create
@@ -69,6 +113,46 @@ class MeshesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mesh_params
-      params.require(:mesh).permit(:origin, :destination, :map_name, :distance)
+      params.require(:mesh).permit(:origin, :destination, :map_name, :distance, :autonomy)
+    end
+
+    def valid_params
+      #validate the parameters
+      valid = true
+      if(!params.require(:origin))
+        valid = false
+      end
+      if(!params.require(:destination))
+        valid = false
+      end
+      if(!params.require(:autonomy))
+        valid = false
+      end
+      if(!params.require(:fuel_value))
+        valid = false
+      end
+      valid
+    end
+
+    def findNextDestination(mash, caminhos, destination, distance, path_results, distance_results)
+        if(mash.destination != destination)
+          @meshes = Mesh.
+           by_origin(mash.destination)
+           .order(:origin)
+
+          caminhos.push(mash.destination)
+          @meshes.each do |mash|
+              distance = distance + mash.distance
+              findNextDestination(mash, caminhos, destination, distance, path_results, distance_results)
+           end
+        else
+            caminhos.push(mash.destination)
+            # puts "**** caminho encontrado *****"
+            caminhos_finalizado = Array.new(caminhos)
+            path_results.push(caminhos_finalizado)
+            distance_results.push(distance)
+            puts "path_results: #{path_results}"
+            puts "distance_results: #{distance_results}"
+        end
     end
 end

@@ -1,0 +1,1 @@
+json.extract! :shortest_path, :cust
