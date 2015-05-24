@@ -1,30 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project describes a solution for selecting the path with the least cost. For it was implemented a solution based on depth-first search, where they are considered all possible paths, but only those who reach the destination will be considered for the choice of lower cost.
 
-Things you may want to cover:
+This project descript 
 
 * Ruby version
-ruby 2.0.0p643
+	ruby 2.0.0p643
 
 * System dependencies
-sqlite3, sass-rails, jquery-rails, jbuilder, rspec-rails, byebug
+	sqlite3, sass-rails, jquery-rails, jbuilder, rspec-rails, byebug
 
-* Configuration 
+* Configuration
 
-* Database creation
-
-* Database initialization
+* Database creation and initialization
+	rake db:create, db:migrate, db:seed
 
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+	$ RAILS_ENV=test rake db:migrate
+	bundle exec rspec
 
 * Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+	rails s
