@@ -26,7 +26,7 @@ class MeshesController < ApplicationController
 
       minimum = results.keys.min
       @path = results[minimum]
-      @cust = minimum.to_f / params[:autonomy].to_f * params[:fuel_value].to_f
+      @cost = minimum.to_f / params[:autonomy].to_f * params[:fuel_value].to_f
     else
       respond_to do |format|
         format.html { render file: File.join(Rails.root, 'public', '406'), status: :not_acceptable }

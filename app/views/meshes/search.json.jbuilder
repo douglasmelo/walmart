@@ -1,2 +1,2 @@
-json.cust @cust
+json.cost @cost
 json.path @path
