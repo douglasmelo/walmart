@@ -21,3 +21,6 @@ This project descript
 
 * Deployment instructions
 	rails s
+
+* Example how to call web service
+	http://localhost:3000/meshes/search.json?origin=C&destination=D&autonomy=10&fuel_value=2.5	
