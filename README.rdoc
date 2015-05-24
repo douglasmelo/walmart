@@ -6,10 +6,12 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+ruby 2.0.0p643
 
 * System dependencies
+sqlite3, sass-rails, jquery-rails, jbuilder, rspec-rails, byebug
 
-* Configuration
+* Configuration 
 
 * Database creation
 

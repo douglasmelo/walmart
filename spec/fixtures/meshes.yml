@@ -1,0 +1,35 @@
+first_route:
+  origin: 'A'
+  destination: 'B'
+  map_name: 'first_route'
+  distance: 10
+
+second_route:
+  origin: 'B'
+  destination: 'D'
+  map_name: 'second_route'
+  distance: 15
+
+third_route:
+  origin: 'A'
+  destination: 'C'
+  map_name: 'third_route'
+  distance: 20
+
+fourth_route:
+  origin: 'C'
+  destination: 'D'
+  map_name: 'fourth_route'
+  distance: 30
+
+fifth_route:
+  origin: 'B'
+  destination: 'E'
+  map_name: 'fifth_route'
+  distance: 50
+
+sixth_route:
+  origin: 'D'
+  destination: 'E'
+  map_name: 'sixth_route'
+  distance: 30  

@@ -1,4 +1,6 @@
 Walmart::Application.routes.draw do
+  root 'meshes#index'
+
   resources :meshes do
     get '/search', on: :collection, action: :search
   end
@@ -43,7 +45,7 @@ Walmart::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
