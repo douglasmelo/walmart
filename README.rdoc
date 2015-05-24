@@ -10,8 +10,6 @@ This project descript
 * System dependencies
 	sqlite3, sass-rails, jquery-rails, jbuilder, rspec-rails, byebug
 
-* Configuration
-
 * Database creation and initialization
 	rake db:create, db:migrate, db:seed
 
