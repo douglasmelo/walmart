@@ -21,7 +21,8 @@ class MeshesController < ApplicationController
 
       Mesh.by_origin(params[:origin]).each do |mash|
         origins = [params[:origin]]
-        find_next_destination(mash, origins, params[:destination], mash.distance, results)
+        mesh = Mesh.new();
+        mesh.find_next_destination(mash, origins, params[:destination], mash.distance, results)
       end
 
       minimum = results.keys.min
@@ -89,16 +90,4 @@ class MeshesController < ApplicationController
       params[:fuel_value].present?
   end
 
-  def find_next_destination(reference_mash, paths, destination, distance, results)
-    paths << reference_mash.destination
-
-    if reference_mash.destination != destination
-      Mesh.by_origin(reference_mash.destination).each do |mash|
-        distance += mash.distance
-        find_next_destination(mash, paths, destination, distance, results)
-      end
-    else
-      results[distance] = paths.clone
-    end
-  end
 end
